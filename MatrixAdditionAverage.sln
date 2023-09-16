@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixAdditionAverage", "MatrixAdditionAverage\MatrixAdditionAverage.csproj", "{2CBF5911-58BC-4DB0-B884-F2E5CABC1792}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMatrixAdditionAverage", "TestMatrixAdditionAverage\TestMatrixAdditionAverage.csproj", "{66E83CBB-B9D0-4E6B-90CC-986915593666}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CBF5911-58BC-4DB0-B884-F2E5CABC1792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CBF5911-58BC-4DB0-B884-F2E5CABC1792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CBF5911-58BC-4DB0-B884-F2E5CABC1792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CBF5911-58BC-4DB0-B884-F2E5CABC1792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66E83CBB-B9D0-4E6B-90CC-986915593666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66E83CBB-B9D0-4E6B-90CC-986915593666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66E83CBB-B9D0-4E6B-90CC-986915593666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66E83CBB-B9D0-4E6B-90CC-986915593666}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8281AE2-8CE7-4F2A-B2FB-9C8C041DC933}
+	EndGlobalSection
+EndGlobal
