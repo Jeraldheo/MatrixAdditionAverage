@@ -40,5 +40,18 @@
 
             return interval;
         }
+
+        public static ICollection<double> GetAcceptedElementsForSum(double[,] matrix, double[] interval)
+        {
+            ICollection<double> acceptedElements = new List<double>();
+            foreach(double element in matrix)
+            {
+                if (interval[0]<=element && element <= interval[1])
+                {
+                    acceptedElements.Add(element);
+                }
+            }
+            return acceptedElements;
+        }
     }
 }
