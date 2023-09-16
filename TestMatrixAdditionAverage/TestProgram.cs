@@ -57,15 +57,15 @@ namespace TestMatrixAdditionAverage
         public static IEnumerable<object[]> TestDataGetAcceptedElementsForSum
             => new[]
             {
-                new object[]{new HashSet<double>{8, 9, 15, 17, 28},
+                new object[]{new List<double>{8, 9, 15, 17, 28},
                              new double[,]{{17, 9, 36},{8, 7, 3},{15, 28, 57}},
                              new double[]{8, 32}},
 
-                new object[]{new HashSet<double>{0},
+                new object[]{new List<double>{0, 0, 0, 0, 0, 0, 0, 0, 0},
                              new double[,]{{0, 0, 0},{0, 0, 0},{0, 0, 0}},
                              new double[]{0, 0}},
 
-                new object[]{new HashSet<double>{7, 8, 9, 10, 12},
+                new object[]{new List<double>{7, 8, 9, 10, 12},
                              new double[,]{ {20, 9, 12},{8, 7, 3}, {10, 20, 1} },
                              new double[]{4, 16}}
 
@@ -73,11 +73,13 @@ namespace TestMatrixAdditionAverage
 
         [Theory]
         [MemberData(nameof(TestDataGetAcceptedElementsForSum))]
-        public static void Test_GetAcceptedElementsForSum(HashSet<double> expectedElements, double[,] matrix, double[] interval)
+        public static void Test_GetAcceptedElementsForSum(List<double> expectedElements, double[,] matrix, double[] interval)
         {
-            ICollection<double> elementsForSum = Program.GetAcceptedElementsForSum(matrix, interval);
-            HashSet<double> elementsForSumSet = elementsForSum.ToHashSet();
-            Assert.Equal(expectedElements, elementsForSumSet);
+            List<double> elementsForSum = Program.GetAcceptedElementsForSum(matrix, interval);
+            elementsForSum.Sort();
+            Assert.Equal(expectedElements, elementsForSum);
         }
+
+        
     }
 }
