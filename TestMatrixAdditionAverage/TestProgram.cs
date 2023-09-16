@@ -25,7 +25,8 @@ namespace TestMatrixAdditionAverage
             {
                 new object[]{12, 20, 60},
                 new object[]{60, 100, 60},
-                new object[]{25, 50, 50}
+                new object[]{25, 50, 50},
+                new object[]{1, 10, 10},
 
             };
         [Theory]
@@ -36,5 +37,21 @@ namespace TestMatrixAdditionAverage
             Assert.Equal(expectedPercentage, percentageResult);
         }
 
+        public static IEnumerable<object[]> TestDataGetAcceptanceInterval
+            => new[]
+            {
+                new object[]{new double[]{8, 32}, 20, 12},
+                new object[]{new double[]{-1, 1}, 0, 1},
+                new object[]{new double[]{7, 13}, 10, 3}
+
+            };
+
+        [Theory]
+        [MemberData(nameof(TestDataGetAcceptanceInterval))]
+        public static void Test_GetAcceptanceInterval(double[] expectedInterval, double center, double distance)
+        {
+            double[] interval = Program.GetAcceptaceInterval(center, distance);
+            Assert.True(interval.SequenceEqual(expectedInterval));
+        }
     }
 }

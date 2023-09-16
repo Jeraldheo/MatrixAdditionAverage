@@ -29,7 +29,7 @@
             double percentageResult = value * (percentage / 100);
             return percentageResult;
         }
-        private static double[] GetAcceptaceInterval(double center, double distance)
+        public static double[] GetAcceptaceInterval(double center, double distance)
         {
             double[] interval = {0, 0};
             double leftEndpoint = center - distance;
