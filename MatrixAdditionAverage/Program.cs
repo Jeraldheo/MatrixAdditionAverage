@@ -1,13 +1,28 @@
-﻿namespace MatrixAdditionAverage
+﻿using System.Text;
+
+namespace MatrixAdditionAverage
 {
     public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            double[,] matrix = new double[,] { { 17, 9, 36 }, { 8, 7, 3 }, { 15, 28, 57 } };
+            double average = ComputeElementsAverage(matrix);
+            double percentage = ComputePercentage(average, 60);
+            double[] acceptanceInterval = GetAcceptaceInterval(average, percentage);
+            List<double> acceptedElementsForSum = GetAcceptedElementsForSum(matrix, acceptanceInterval);
+            List<double> notAcceptedElementsForSum = GetNotAcceptedElementsForSum(matrix, acceptanceInterval);
+
+            Console.WriteLine($"La suma es: {acceptedElementsForSum.Sum()}");
+            Console.WriteLine($"Promedio: {average}");
+            Console.WriteLine($"No aplican para sumar: {ListToString(notAcceptedElementsForSum)}");
+            Console.WriteLine($"Sí aplican para sumar: {ListToString(acceptedElementsForSum)}");
+
+            
+
         }
 
-        public static double ComputeElementsAverage(int[,] matrix)
+        public static double ComputeElementsAverage(double[,] matrix)
         {
             double average = 0;
             int numRows = matrix.GetLength(0);
@@ -65,6 +80,20 @@
                 }
             }
             return notAcceptedElements;
+        }
+
+        private static string ListToString(List<double> list)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            int size = list.Count;
+
+            for(int i = 0; i<size-1; i++)
+            {
+                stringBuilder.Append(list[i] + ", ");
+            }
+
+            stringBuilder.Append(list[size - 1]);
+            return stringBuilder.ToString();
         }
     }
 }
