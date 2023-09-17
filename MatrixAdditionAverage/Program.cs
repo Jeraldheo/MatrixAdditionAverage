@@ -53,5 +53,18 @@
             }
             return acceptedElements;
         }
+
+        public static List<double> GetNotAcceptedElementsForSum(double[,] matrix, double[] interval)
+        {
+            List<double> notAcceptedElements = new List<double>();
+            foreach(double element in matrix)
+            {
+                if (element < interval[0] || interval[1] < element)
+                {
+                    notAcceptedElements.Add(element);
+                }
+            }
+            return notAcceptedElements;
+        }
     }
 }

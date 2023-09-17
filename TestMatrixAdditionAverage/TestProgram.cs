@@ -51,7 +51,7 @@ namespace TestMatrixAdditionAverage
         public static void Test_GetAcceptanceInterval(double[] expectedInterval, double center, double distance)
         {
             double[] interval = Program.GetAcceptaceInterval(center, distance);
-            Assert.True(interval.SequenceEqual(expectedInterval));
+            Assert.Equal(expectedInterval, interval);
         }
 
         public static IEnumerable<object[]> TestDataGetAcceptedElementsForSum
@@ -80,6 +80,30 @@ namespace TestMatrixAdditionAverage
             Assert.Equal(expectedElements, elementsForSum);
         }
 
-        
+        public static IEnumerable<object[]> TestDataGetNotAcceptedElementsForSum
+            => new[]
+            {
+                new object[]{new List<double>{3, 7, 36, 57},
+                             new double[,]{{17, 9, 36},{8, 7, 3},{15, 28, 57}},
+                             new double[]{8, 32}},
+
+                new object[]{new List<double>{},
+                             new double[,]{{0, 0, 0},{0, 0, 0},{0, 0, 0}},
+                             new double[]{0, 0}},
+
+                new object[]{new List<double>{1, 3, 20, 20},
+                             new double[,]{ {20, 9, 12},{8, 7, 3}, {10, 20, 1} },
+                             new double[]{4, 16}}
+
+            };
+
+        [Theory]
+        [MemberData(nameof(TestDataGetNotAcceptedElementsForSum))]
+        public static void Test_GetNotAcceptedElementsForSum(List<double> expectedElements, double[,] matrix, double[] interval)
+        {
+            List<double> notElementsForSum = Program.GetNotAcceptedElementsForSum(matrix, interval);
+            notElementsForSum.Sort();
+            Assert.Equal(expectedElements, notElementsForSum);
+        }
     }
 }
